@@ -6,6 +6,7 @@ Return the number of small bars to use, assuming we always use big bars
 before small bars. Return -1 if it can't be done.
 """
 
+
 def make_chocolate(small, big, goal):
     """
     Evaluate how much small bars should be used, assuming we
@@ -20,4 +21,9 @@ def make_chocolate(small, big, goal):
     :return: How much small bars can be used, -1 if impossible.
     :rtype: int
     """
-    return 0
+    small, big, goal = (int(x) for x in (small, big, goal))
+    if small < 0 or big < 0 or goal < 0:
+        raise RuntimeError
+    big_mass = big * 5
+    small_mass = goal - big_mass if big_mass < goal else goal % 5
+    return small_mass if small_mass <= small else -1
