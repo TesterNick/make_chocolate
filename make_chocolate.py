@@ -27,3 +27,24 @@ def make_chocolate(small, big, goal):
     big_mass = big * 5
     small_mass = goal - big_mass if big_mass < goal else goal % 5
     return small_mass if small_mass <= small else -1
+
+
+def main():
+    while True:
+        try:
+            print(("Please enter amount of small and big bars and the goal. "
+                   "Enter numbers one by one, confirming them with Enter key. "
+                   "Press Ctrl + C for exit."))
+            amount = make_chocolate(input(), input(), input())
+            if amount == -1:
+                print("It's impossible!")
+            else:
+                print(f"You will need {amount} of small bars")
+        except ValueError:
+            print("Please make sure you enter only natural numbers!")
+        except RuntimeError:
+            print("Negative numbers are unacceptable!")
+
+
+if __name__ == '__main__':
+    main()
