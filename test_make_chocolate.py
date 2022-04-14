@@ -1,6 +1,6 @@
 import unittest
 
-from make_chocolate import make_chocolate
+from make_chocolate import make_chocolate, validate
 
 
 class TestMakeChocolate(unittest.TestCase):
@@ -40,17 +40,16 @@ class TestMakeChocolate(unittest.TestCase):
         amount = make_chocolate(1, 1, 7)
         self.assertEqual(amount, -1)
 
+
+class TestValidate(unittest.TestCase):
+
     def test_package_can_not_be_made_with_non_numeric_amount_of_bars(self):
         """ Function throws ValueError on incorrect input """
-        for args in [["", 1, 1], [1, "", 1], [1, 1, ""]]:
-            with self.subTest(f"Check input:{args}"):
-                self.assertRaises(ValueError, make_chocolate, *args)
+        self.assertRaises(ValueError, validate, "")
 
     def test_package_can_not_be_made_with_negative_amount_of_bars(self):
         """ Function throws RuntimeError on negative input """
-        for args in [[-1, 1, 1], [1, -1, 1], [1, 1, -1]]:
-            with self.subTest(f"Check input:{args}"):
-                self.assertRaises(RuntimeError, make_chocolate, *args)
+        self.assertRaises(RuntimeError, validate, -1)
 
 
 if __name__ == '__main__':
