@@ -16,7 +16,7 @@ def make_chocolate(small, big, goal):
     :type small: int
     :param big: Amount of big bars given.
     :type big: int
-    :param goal: How much kilos needed.
+    :param goal: How many kilos needed.
     :type goal: int
     :return: How much small bars can be used, -1 if impossible.
     :rtype: int
